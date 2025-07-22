@@ -9,9 +9,9 @@ app.use(express.json())
 
 mongoose.connect('mongodb://127.0.0.1:27017/test').then(()=> console.log('mongodb connected')).catch((err)=> console.log(err))
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT || 3000 , ()=>{
     console.log('server  is  running')
-})
+})                                   g
 
 
 app.post('/add' , (req,res ) =>{
