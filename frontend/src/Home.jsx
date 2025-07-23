@@ -9,7 +9,10 @@ function Home() {
   useEffect(() => {
     axios
       .get('https://todo-p9mo.onrender.com/get')
-      .then((result) => setTodo(result.data))
+      .then((result) => {
+  console.log("Data received:", result.data); // Check what this prints
+  setTodo(result.data); // then fix if needed
+})
       .catch((err) => console.log(err));
   }, []);
 
