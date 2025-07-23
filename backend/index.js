@@ -43,6 +43,19 @@ app.put('/update/:id', (req, res) => {
         .catch(err => res.json(err));
 });
 
+app.get('/test-mongo', async (req, res) => {
+    try {
+        const mongooseState = mongoose.connection.readyState;
+        if (mongooseState === 1) {
+            res.send('✅ MongoDB is connected');
+        } else {
+            res.send('❌ MongoDB not connected');
+        }
+    } catch (err) {
+        res.status(500).send('❌ Error testing MongoDB connection');
+    }
+});
+
 // Delete Todo
 app.delete('/delete/:id', (req, res) => {
     const { id } = req.params;
